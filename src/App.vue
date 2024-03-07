@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import Greeting from './components/Greeting.vue'
-import Statement from './components/Statement.vue'
-import Access from './components/Access.vue'
-import Contact from './components/Contact.vue'
-import Credit from './components/Credit.vue'
-import Footer from './components/Footer.vue'
+import LandingGreeting from './components/LandingGreeting.vue'
+import LandingStatement from './components/LandingStatement.vue'
+import LandingAccess from './components/LandingAccess.vue'
+import LandingContact from './components/LandingContact.vue'
+import LandingCredit from './components/LandingCredit.vue'
+import LandingFooter from './components/LandingFooter.vue'
 </script>
 
 <template>
   <div>
-    <Greeting />
-    <Statement />
-    <Access />
-    <Contact />
-    <Credit />
-    <Footer />
+    <LandingGreeting />
+    <LandingStatement />
+    <LandingAccess />
+    <LandingContact />
+    <LandingCredit />
+    <LandingFooter />
   </div>
 </template>
 
