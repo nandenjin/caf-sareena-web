@@ -42,6 +42,7 @@ header {
   }
 
   .caf-logo {
+    display: block;
     position: fixed;
     top: var(--margin-page);
     right: var(--margin-page);
