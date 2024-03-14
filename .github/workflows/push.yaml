@@ -27,6 +27,8 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
+        env:
+          BASE_URL: caf-sareena-web
 
   deploy:
     needs: build
