@@ -65,7 +65,7 @@ img[src$='.svg'] {
   font-feature-settings: 'palt';
 
   [lang='en'] {
-    text-align: left;
+    font-weight: normal;
   }
 }
 
