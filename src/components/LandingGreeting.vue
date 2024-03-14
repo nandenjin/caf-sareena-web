@@ -18,7 +18,7 @@
 </template>
 
 <style scoped>
-.text-column {
-  margin: var(--margin-page);
+section {
+  margin: 5rem var(--margin-page) auto;
 }
 </style>
