@@ -10,5 +10,10 @@
   "parserOptions": {
     "sourceType": "module",
     "parser": "@typescript-eslint/parser"
+  },
+  "rules": {
+    "vue/max-attributes-per-line": "off",
+    "vue/html-self-closing": "off",
+    "vue/html-closing-bracket-newline": "off"
   }
 }
