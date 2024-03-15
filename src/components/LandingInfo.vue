@@ -153,6 +153,7 @@ th {
 
   @media screen and (max-width: 768px) {
     position: static;
+    max-width: unset;
   }
 }
 </style>
