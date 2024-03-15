@@ -15,11 +15,12 @@
           class="info"
         />
       </p>
-      <a href="https://gendai-art.org/" class="caf-logo"
-        ><img
+      <a href="https://gendai-art.org/" class="caf-logo">
+        <img
           src="@/assets/design/caf-logo.svg"
           alt="Contemporary Art Foundation"
-      /></a>
+        />
+      </a>
     </div>
   </header>
 </template>
