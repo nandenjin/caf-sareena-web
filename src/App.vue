@@ -41,6 +41,14 @@ u {
   text-underline-offset: 0.2em;
 }
 
+figure {
+  margin: 0;
+}
+
+figcaption {
+  text-align: left;
+}
+
 img[src$='.svg'] {
   user-select: none;
   pointer-events: none;
@@ -72,8 +80,34 @@ img[src$='.svg'] {
 .text-column {
   width: 45%;
 
+  .visual {
+    position: fixed;
+    &:is(img),
+    &:not(img) img,
+    &:not(img) figcaption {
+      width: 25vw;
+      max-width: 600px;
+      font-size: 0.6em;
+    }
+  }
+
   @media screen and (max-width: 768px) {
     width: auto;
+
+    .visual-container {
+      margin: 2em 0;
+    }
+
+    .visual {
+      position: static;
+
+      &:is(img),
+      &:not(img) img,
+      &:not(img) figcaption {
+        display: inline-block;
+        width: 85%;
+      }
+    }
   }
 }
 </style>

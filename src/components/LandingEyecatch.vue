@@ -30,6 +30,7 @@ header {
   width: 100%;
   height: 100vh;
 }
+
 .text-container {
   max-width: 575px;
   margin: var(--margin-page);
@@ -47,6 +48,7 @@ header {
     position: fixed;
     top: var(--margin-page);
     right: var(--margin-page);
+    z-index: 1;
     width: 4.5rem;
     transition: opacity 0.3s;
 

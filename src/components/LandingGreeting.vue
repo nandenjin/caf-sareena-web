@@ -13,9 +13,46 @@
       <p>
         サリーナはタイの少数民族出身であるという個人的な背景や、日常生活をインスピレーションソースとして、これまでパフォーマンスアート、写真、ビデオ・アート、インスタレーションなど、さまざまな媒体で制作を続けています。
       </p>
+      <div>
+        <AppearByScroll>
+          <div class="visual-container">
+            <figure
+              class="visual"
+              style="
+                text-align: right;
+                transform: translateX(2rem);
+                top: 20vh;
+                left: 55vw;
+              "
+            >
+              <img src="@/assets/images/works_0.jpg" alt="" />
+              <figcaption class="font-gothic" lang="en">
+                We are marching towards non-existent, 2023, Performance
+              </figcaption>
+            </figure>
+          </div>
+        </AppearByScroll>
+        <AppearByScroll :offset="100">
+          <div class="visual-container">
+            <figure
+              class="visual"
+              style="transform: translateX(-1rem); bottom: 10vh; right: 5vw"
+            >
+              <img src="@/assets/images/works_1.jpg" alt="" />
+              <figcaption class="font-gothic" lang="en">
+                Balen(ciaga) I belong, 2022, Video installation
+              </figcaption>
+            </figure>
+          </div>
+        </AppearByScroll>
+      </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import AppearByScroll from './AppearByScroll.vue'
+</script>
 
 <style scoped>
 section {

@@ -1,3 +1,5 @@
+import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
+'./AppearByScroll.vue';
 <template>
   <section>
     <div class="text-column">
@@ -39,13 +41,20 @@
             </tr>
             <tr>
               <th>時間</th>
-              <td>12:00–19:00</td>
+              <td>12:00-19:00</td>
             </tr>
             <tr>
               <th>アクセス</th>
               <td>
                 <u>東京都港区六本木6-6-9 ピラミデビル4F</u><br />Piramide Bldg.,
                 4F 6-6-9 Roppongi, Minato-ku Tokyo
+                <AppearByScroll>
+                  <img
+                    class="map"
+                    src="@/assets/images/map.jpg"
+                    style="width: 100%; margin: 1em 0"
+                  />
+                </AppearByScroll>
               </td>
             </tr>
             <tr>
@@ -72,9 +81,13 @@
   </section>
 </template>
 
+<script setup lang="ts">
+import AppearByScroll from './AppearByScroll.vue'
+</script>
+
 <style scoped>
 section {
-  margin: 5rem var(--margin-page) auto;
+  margin: 10rem var(--margin-page) auto;
 }
 
 .container {
@@ -103,6 +116,12 @@ section {
   .headline__en-container {
     max-width: 100%;
   }
+
+  @media screen and (max-width: 768px) {
+    .headline__en-container {
+      width: 80%;
+    }
+  }
 }
 
 tr,
@@ -123,5 +142,16 @@ td {
 th {
   text-align: left;
   vertical-align: top;
+}
+
+.map {
+  position: fixed;
+  top: 20vh;
+  right: 10vw;
+  max-width: 30vw;
+
+  @media screen and (max-width: 768px) {
+    position: static;
+  }
 }
 </style>
