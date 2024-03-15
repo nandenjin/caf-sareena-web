@@ -58,9 +58,9 @@ img[src$='.svg'] {
 }
 
 .font-serif {
-  font-family: Garamond, 'Times New Roman', 'Noto Serif JP', serif;
+  font-family: YakuHanMP, 'EB Garamond', 'Times New Roman', 'Noto Serif JP',
+    serif;
   line-height: 1.8em;
-  font-weight: bold;
   font-feature-settings: 'palt';
 
   [lang='en'] {
