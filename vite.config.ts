@@ -6,6 +6,9 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: process.env.BASE_URL,
   plugins: [vue()],
+  build: {
+    assetsInlineLimit: 20 * 1024,
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
