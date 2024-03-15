@@ -81,6 +81,8 @@ img[src$='.svg'] {
   width: 45%;
 
   .visual {
+    line-height: 1em;
+
     position: fixed;
     &:is(img),
     &:not(img) img,
