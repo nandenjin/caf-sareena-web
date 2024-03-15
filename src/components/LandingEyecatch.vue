@@ -46,7 +46,7 @@ header {
     position: fixed;
     top: var(--margin-page);
     right: var(--margin-page);
-    width: 5rem;
+    width: 4.5rem;
     transition: opacity 0.3s;
 
     &:hover {
