@@ -3,23 +3,25 @@
     <div class="text-column">
       <div class="container">
         <h2 class="headline">
-          <div>
+          <div class="headline__en-container">
             <img
               src="@/assets/design/title-mini-en-0.svg"
               alt="IN THE REALM "
               class="logo"
-              style="margin-right: 1rem"
+              style="max-width: 72%; margin-right: 1rem"
             />
             <img
               src="@/assets/design/title-mini-en-1.svg"
               alt="BEYOND SPECTRUM"
               class="logo"
+              style="max-width: 100%"
             />
           </div>
           <img
             src="@/assets/design/title-mini-ja.svg"
             alt="スペクトルの彼方で"
             class="logo"
+            style="max-width: 90%"
           />
         </h2>
         <table class="font-gothic">
@@ -71,7 +73,7 @@
 </template>
 
 <style scoped>
-.text-column {
+section {
   margin: 5rem var(--margin-page) auto;
 }
 
@@ -97,29 +99,29 @@
 
 .headline {
   line-height: 1.2;
+
+  .headline__en-container {
+    max-width: 100%;
+  }
 }
 
+tr,
 th,
 td {
-  padding: 0.5rem 0;
+  display: block;
+  padding: 0;
+}
+
+tr {
+  margin-bottom: 1rem;
+}
+th,
+td {
+  padding: 0.2rem 0;
 }
 
 th {
-  padding-right: 2rem;
   text-align: left;
   vertical-align: top;
-}
-
-@media screen and (max-width: 768px) {
-  tr,
-  th,
-  td {
-    display: block;
-    padding: 0;
-  }
-
-  tr {
-    margin-bottom: 1rem;
-  }
 }
 </style>

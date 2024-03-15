@@ -20,15 +20,15 @@ import LandingInfo from './components/LandingInfo.vue'
 
 <style>
 :root {
-  font-size: 20px;
+  font-size: 19px;
   --margin-page: 2rem;
 
   @media screen and (max-width: 1200px) {
-    font-size: 1.8vw;
+    font-size: 1.5vw;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 4vw;
+    font-size: 15px;
   }
 }
 
@@ -49,12 +49,11 @@ img[src$='.svg'] {
 .font-gothic {
   font-family: 'Helvetica', Arial, 'Noto Sans JP', sans-serif;
   font-weight: bold;
-  letter-spacing: -0.05em;
   line-height: 1.8em;
   font-feature-settings: 'palt';
 
   [lang='en'] {
-    line-height: 1.5rem;
+    line-height: 1.5em;
   }
 }
 
@@ -65,12 +64,13 @@ img[src$='.svg'] {
   font-feature-settings: 'palt';
 
   [lang='en'] {
-    font-weight: normal;
+    text-align: left;
+    line-height: 1.5em;
   }
 }
 
 .text-column {
-  width: 50%;
+  width: 45%;
 
   @media screen and (max-width: 768px) {
     width: auto;
