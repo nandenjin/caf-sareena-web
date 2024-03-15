@@ -53,6 +53,7 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
                     class="map"
                     src="@/assets/images/map.jpg"
                     style="width: 100%; margin: 1em 0"
+                    alt="現代芸術振興財団までの地図。東京メトロ六本木駅 3番出口より徒歩"
                   />
                 </AppearByScroll>
               </td>
