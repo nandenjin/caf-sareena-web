@@ -49,12 +49,14 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
                 <u>東京都港区六本木6-6-9 ピラミデビル4F</u><br />Piramide Bldg.,
                 4F 6-6-9 Roppongi, Minato-ku Tokyo
                 <AppearByScroll>
-                  <img
-                    class="map"
-                    src="@/assets/images/map.jpg"
-                    style="width: 100%; margin: 1em 0"
-                    alt="現代芸術振興財団までの地図。東京メトロ六本木駅 3番出口より徒歩"
-                  />
+                  <figure class="map">
+                    <img
+                      src="@/assets/images/map.jpg"
+                      style="width: 100%"
+                      alt="現代芸術振興財団までの地図。東京メトロ六本木駅 3番出口より徒歩"
+                    />
+                    <figcaption>出典｜国土地理院</figcaption>
+                  </figure>
                 </AppearByScroll>
               </td>
             </tr>
@@ -147,9 +149,15 @@ th {
 
 .map {
   position: fixed;
-  top: 20vh;
-  right: 10vw;
-  max-width: 30vw;
+  top: 25vh;
+  right: 2vw;
+  max-width: 20vw;
+  margin: 1rem 0;
+  line-height: 1.3rem;
+
+  figcaption {
+    font-size: 0.6em;
+  }
 
   @media screen and (max-width: 768px) {
     position: static;
