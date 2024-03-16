@@ -133,42 +133,43 @@ onMounted(() => {
 
   renderer.value = tRenderer
 
+  const createPosition = (xz: number, y: number) => {
+    const x = Math.cos(xz)
+    const z = Math.sin(xz)
+    return new Vector3(x, y, z)
+  }
   const pictureFrameConfigs: {
     position: Vector3
     distance: number
     cycleMs: number
   }[] = [
     {
-      position: new Vector3(
-        Math.cos(-Math.PI / 6),
-        -0.2,
-        Math.sin(-Math.PI / 6)
-      ),
+      position: createPosition(-0.6, -0.2),
       distance: 2000,
       cycleMs: 3000,
     },
     {
-      position: new Vector3(Math.cos(-0.3), 0.2, Math.sin(-0.3)),
+      position: createPosition(-0.3, 0.2),
       distance: 2000,
       cycleMs: 4000,
     },
     {
-      position: new Vector3(Math.cos(-0.2), -0.25, Math.sin(-0.2)),
+      position: createPosition(-0.2, -0.25),
       distance: 2000,
       cycleMs: 6000,
     },
     {
-      position: new Vector3(Math.cos(0), 0, Math.sin(0)),
+      position: createPosition(0, 0),
       distance: 2500,
       cycleMs: 3000,
     },
     {
-      position: new Vector3(Math.cos(0.3), 0.15, Math.sin(0.3)),
+      position: createPosition(0.35, 0.15),
       distance: 1500,
       cycleMs: 2000,
     },
     {
-      position: new Vector3(Math.cos(0.45), -0.15, Math.sin(0.45)),
+      position: createPosition(0.6, -0.15),
       distance: 1500,
       cycleMs: 5000,
     },
