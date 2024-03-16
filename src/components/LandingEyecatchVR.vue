@@ -18,6 +18,8 @@ import Image6 from '@/assets/images/image_6.jpg'
 const pictures = [Image0, Image1, Image3, Image4, Image5, Image6]
 const frames = ref<VRPictureFrame[]>([])
 
+const interactionMode = ref<'mouse' | 'gyro'>('mouse')
+
 const rendererContainer = ref<HTMLDivElement | null>(null)
 const renderer = ref<CSS3DRenderer | null>(null)
 const scene = ref<Scene>(new Scene())
@@ -89,9 +91,20 @@ const onResize = () => {
   renderer.value.setSize(window.innerWidth, window.innerHeight)
 }
 
-const onMouseMove = (e: MouseEvent) => {
+const handleMouseMove = (e: MouseEvent) => {
+  // Ignore mouse events if gyro is enabled
+  // if (interactionMode.value === 'gyro') return
+
   const x = (e.clientX / window.innerWidth - 0.5) * 2
   const y = (e.clientY / window.innerHeight - 0.5) * 2
+  pointerPosition.value.set(x, y)
+}
+
+const handleOrientation = (e: DeviceOrientationEvent) => {
+  console.log('gyro')
+  interactionMode.value = 'gyro'
+  const x = e.beta ? e.beta / 180 : 0
+  const y = e.gamma ? e.gamma / 180 : 0
   pointerPosition.value.set(x, y)
 }
 
@@ -193,7 +206,8 @@ onMounted(() => {
   onResize()
   render()
   window.addEventListener('resize', onResize)
-  window.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('mousemove', handleMouseMove)
+  window.addEventListener('deviceorientation', handleOrientation)
 })
 
 onUnmounted(() => {
@@ -203,7 +217,8 @@ onUnmounted(() => {
   tScene?.clear()
 
   window.removeEventListener('resize', onResize)
-  window.removeEventListener('mousemove', onMouseMove)
+  window.removeEventListener('mousemove', handleMouseMove)
+  window.removeEventListener('deviceorientation', handleOrientation)
 })
 </script>
 
