@@ -1,5 +1,13 @@
 <template>
   <header>
+    <div
+      class="vr-container"
+      :style="{
+        opacity: Math.min(1, Math.max(1 - scrollY / 500, 0)),
+      }"
+    >
+      <VRview />
+    </div>
     <div class="text-container">
       <h1>
         <img
@@ -25,13 +33,45 @@
   </header>
 </template>
 
+<script setup lang="ts">
+import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
+
+const VRview = defineAsyncComponent(() => import('./LandingEyecatchVR.vue'))
+const scrollY = ref(0)
+
+const onScroll = () => {
+  scrollY.value = window.scrollY
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', onScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+})
+</script>
+
 <style scoped>
 header {
   width: 100%;
   height: 100vh;
 }
 
+.vr-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 .text-container {
+  position: relative;
+  z-index: 2;
   max-width: 575px;
   margin: var(--margin-page);
 
