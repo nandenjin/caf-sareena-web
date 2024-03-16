@@ -38,21 +38,33 @@ class VRPictureFrame {
     return this._index
   }
   private set index(value) {
+    // Create next image DOM
     const nextImageDom = document.createElement('img')
     nextImageDom.src = pictures[value]
+    nextImageDom.setAttribute('alt', '')
+
+    // When next image is loaded,
     nextImageDom.addEventListener('load', () => {
       const current = this.currentImageDom
+
+      // If current image exists,
       if (current) {
+        // Remove current image after transition
         current.addEventListener('transitionend', () => {
           this.domElement.removeChild(current!)
           this.currentImageDom = nextImageDom
           nextImageDom.classList.add('is-active')
         })
         current.classList.add('is-being-removed')
-      } else {
+      }
+
+      // If this is the first image,
+      else {
         nextImageDom.classList.add('is-active')
         this.currentImageDom = nextImageDom
       }
+
+      // Add next image to the dom
       this.domElement.appendChild(nextImageDom)
     })
     this._index = value
