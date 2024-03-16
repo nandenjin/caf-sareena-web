@@ -26,6 +26,7 @@ const scene = ref<Scene>(new Scene())
 const camera = ref<Camera>(new PerspectiveCamera(40))
 const isMounted = ref(false)
 const pointerPosition = ref(new Vector2())
+const pointerPositionSmoothed = ref(new Vector2())
 
 class VRPictureFrame {
   domElement = document.createElement('div')
@@ -95,7 +96,7 @@ class VRPictureFrame {
   }
 }
 
-const onResize = () => {
+const handleCanvasResize = () => {
   if (!renderer.value) {
     return
   }
@@ -109,7 +110,9 @@ const handleMouseMove = (e: MouseEvent) => {
 
   const x = (e.clientX / window.innerWidth - 0.5) * 2
   const y = (e.clientY / window.innerHeight - 0.5) * 2
-  pointerPosition.value.set(x, y)
+
+  const p = pointerPosition.value
+  p.set(x, y)
 }
 
 const handleOrientation = (e: DeviceOrientationEvent) => {
@@ -118,9 +121,7 @@ const handleOrientation = (e: DeviceOrientationEvent) => {
   const y = 0 // e.beta ? -e.beta / 90 : 0
 
   const p = pointerPosition.value
-
-  // Smoothing process
-  p.set(x + p.x / 2, y + p.y / 2)
+  p.set(x, y)
 }
 
 const render = () => {
@@ -133,11 +134,21 @@ const render = () => {
   const tRenderer = renderer.value,
     tScene = scene.value,
     tCamera = camera.value,
-    tPointerPosition = pointerPosition.value
+    tPointerPosition = pointerPosition.value,
+    tPointerPositionSmoothed = pointerPositionSmoothed.value
+
+  // Smooth pointer position
+  const smoothRatio = 0.1
+  tPointerPositionSmoothed.set(
+    tPointerPosition.x * smoothRatio +
+      tPointerPositionSmoothed.x * (1 - smoothRatio),
+    tPointerPosition.y * smoothRatio +
+      tPointerPositionSmoothed.y * (1 - smoothRatio)
+  )
+
+  const { x, y } = tPointerPositionSmoothed
 
   const v = (x: number) => 1 - 1 / (x + 1)
-  const x = tPointerPosition.x,
-    y = tPointerPosition.y
   const rotationY = (Math.PI / 6) * (x > 0 ? v(x) : -v(-x))
   const rotationX = (Math.PI / 24) * (y > 0 ? -v(y) : v(-y))
   tCamera.lookAt(Math.cos(rotationY), Math.sin(rotationX), Math.sin(rotationY))
@@ -218,9 +229,9 @@ onMounted(() => {
 
   isMounted.value = true
 
-  onResize()
+  handleCanvasResize()
   render()
-  window.addEventListener('resize', onResize)
+  window.addEventListener('resize', handleCanvasResize)
   window.addEventListener('mousemove', handleMouseMove)
   window.addEventListener('deviceorientation', handleOrientation)
 })
@@ -231,7 +242,7 @@ onUnmounted(() => {
   const tScene = scene.value
   tScene?.clear()
 
-  window.removeEventListener('resize', onResize)
+  window.removeEventListener('resize', handleCanvasResize)
   window.removeEventListener('mousemove', handleMouseMove)
   window.removeEventListener('deviceorientation', handleOrientation)
 })
