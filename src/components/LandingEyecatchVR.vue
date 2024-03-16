@@ -101,11 +101,14 @@ const handleMouseMove = (e: MouseEvent) => {
 }
 
 const handleOrientation = (e: DeviceOrientationEvent) => {
-  console.log('gyro')
   interactionMode.value = 'gyro'
-  const x = e.beta ? e.beta / 180 : 0
-  const y = e.gamma ? e.gamma / 180 : 0
-  pointerPosition.value.set(x, y)
+  const x = e.gamma ? -e.gamma / 90 : 0
+  const y = 0 // e.beta ? -e.beta / 90 : 0
+
+  const p = pointerPosition.value
+
+  // Smoothing process
+  p.set(x + p.x / 2, y + p.y / 2)
 }
 
 const render = () => {
