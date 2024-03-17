@@ -32,7 +32,9 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
         <table class="font-gothic">
           <tbody>
             <tr>
-              <th>アーティスト</th>
+              <th style="font-size: 0.8rem; line-height: 1em">
+                CAF賞2022最優秀賞受賞者
+              </th>
               <td>
                 <a
                   href="https://www.instagram.com/sareenasattapon/"
@@ -40,6 +42,7 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
                   rel="noopener noreferrer"
                   >サリーナ・サッタポン</a
                 >
+                個展
               </td>
             </tr>
             <tr>
