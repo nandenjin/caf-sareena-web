@@ -15,5 +15,6 @@
 <style scoped>
 section {
   margin: 5em var(--margin-page) 0;
+  font-size: 0.7rem;
 }
 </style>
