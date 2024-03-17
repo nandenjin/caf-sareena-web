@@ -33,7 +33,14 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
           <tbody>
             <tr>
               <th>アーティスト</th>
-              <td><u>サリーナ・サッタポン</u></td>
+              <td>
+                <a
+                  href="https://www.instagram.com/sareenasattapon/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >サリーナ・サッタポン</a
+                >
+              </td>
             </tr>
             <tr>
               <th>会期</th>
@@ -87,9 +94,24 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
               <th>クレジット</th>
               <td>
                 主催：公益財団法人現代芸術振興財団<br />グラフィックデザイン：
-                <u>久保海音</u><br />Webデザイン: 久保海音 + <u>古庄果奈</u
+                <a
+                  href="https://www.instagram.com/_umot/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >久保海音</a
+                ><br />Webデザイン: 久保海音 +
+                <a
+                  href="https://www.instagram.com/kana__nk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >古庄果奈</a
                 ><br />Webコーディング:
-                <u>稲田和巳</u>
+                <a
+                  href="https://www.nandenjin.com/?utm_source=caf&utm_medium=credit&utm_campaign=sareena_web"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >稲田和巳</a
+                >
               </td>
             </tr>
           </tbody>

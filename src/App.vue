@@ -43,10 +43,6 @@ a {
   text-underline-offset: 0.2em;
 }
 
-a {
-  text-decoration: dashed underline;
-}
-
 figure {
   margin: 0;
 }
