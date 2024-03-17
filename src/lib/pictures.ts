@@ -14,8 +14,8 @@ import Image23 from '@/assets/images/2-3.jpg'
 // import Image25 from '@/assets/images/2-5.jpg'
 // import Image26 from '@/assets/images/2-6.jpg'
 // import Image31 from '@/assets/images/3-1.jpg'
-// import Image32 from '@/assets/images/3-2.jpg'
-import Image33 from '@/assets/images/3-3.jpg'
+import Image32 from '@/assets/images/3-2.jpg'
+// import Image33 from '@/assets/images/3-3.jpg'
 import Image34 from '@/assets/images/3-4.jpg'
 // import Image35 from '@/assets/images/3-5.jpg'
 // import Image36 from '@/assets/images/3-6.jpg'
@@ -74,7 +74,7 @@ export const pictures: PictureAsset[] = [
     position: createPosition(-0.4, 0.2),
     distance: 1800,
     cycleMs: 4200,
-    urls: [Image11, Image22, Image33, Image44, Image55, Image66],
+    urls: [Image11, Image22, Image32, Image44, Image55, Image66],
   },
   {
     // Slot 2
@@ -88,7 +88,7 @@ export const pictures: PictureAsset[] = [
     position: createPosition(-0.05, 0),
     distance: 1500,
     cycleMs: 2500,
-    urls: [Image11, Image22, Image33, Image44, Image55, Image66],
+    urls: [Image11, Image22, Image32, Image44, Image55, Image66],
   },
   {
     // Slot 4
@@ -102,7 +102,7 @@ export const pictures: PictureAsset[] = [
     position: createPosition(-0.2, -0.3),
     distance: 1500,
     cycleMs: 5500,
-    urls: [Image11, Image22, Image33, Image44, Image55, Image66],
+    urls: [Image11, Image22, Image32, Image44, Image55, Image66],
   },
   {
     // Slot 6
@@ -175,7 +175,9 @@ export class VRPictureFrame {
     const { nextUpdate, cycleMs, pictures, index } = this
     if (Date.now() > nextUpdate) {
       this.nextUpdate = Date.now() + cycleMs
-      this.setIndex((index + 1) % pictures.length)
+      this.setIndex(
+        (index + Math.floor(Math.random() * pictures.length)) % pictures.length
+      )
     }
   }
 }
