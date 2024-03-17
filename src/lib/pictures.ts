@@ -38,6 +38,22 @@ import Image61 from '@/assets/images/6-1.jpg'
 // import Image65 from '@/assets/images/6-5.jpg'
 import Image66 from '@/assets/images/6-6.jpg'
 
+const imageCache: Record<string, string | Promise<string>> = {}
+export const fetchImage = (url: string) => {
+  if (imageCache[url]) {
+    return Promise.resolve(imageCache[url])
+  } else {
+    const task = fetch(url)
+      .then((res) => res.blob())
+      .then((blob) => {
+        imageCache[url] = URL.createObjectURL(blob)
+        return URL.createObjectURL(blob)
+      })
+    imageCache[url] = task
+    return task
+  }
+}
+
 const createPosition = (xz: number, y: number) => {
   const x = Math.cos(xz)
   const z = Math.sin(xz)

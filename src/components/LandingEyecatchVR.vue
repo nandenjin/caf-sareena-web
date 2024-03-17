@@ -9,7 +9,12 @@
 import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { CSS3DRenderer } from 'three/addons'
 import { Camera, PerspectiveCamera, Scene, Vector2 } from 'three'
-import { PictureAsset, VRPictureFrame, pictures } from '../lib/pictures'
+import {
+  PictureAsset,
+  VRPictureFrame,
+  fetchImage,
+  pictures,
+} from '../lib/pictures'
 
 const frames = ref<VRPictureFrame[]>([])
 
@@ -99,12 +104,10 @@ onMounted(async () => {
     loadingTasks.push(
       Promise.all(
         picture.urls.map((url: string) =>
-          fetch(url)
-            .then((res) => res.blob())
-            .then((blob) => {
-              loadingState.loaded++
-              return URL.createObjectURL(blob)
-            })
+          fetchImage(url).then((url) => {
+            loadingState.loaded++
+            return url
+          })
         )
       ).then((urls) => ({
         ...picture,
