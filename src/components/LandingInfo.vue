@@ -36,7 +36,8 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
               <th>会期</th>
               <td>
                 2024年3月23日[土] - 5月25日[土]<br />木–土曜日
-                開廊｜日–水曜日、祝日 休廊
+                開廊｜日–水曜日、祝日 休廊<br />
+                オープニングレセプション 3月23日[土] 17:00-19:00
               </td>
             </tr>
             <tr>
