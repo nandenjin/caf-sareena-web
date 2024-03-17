@@ -1,4 +1,3 @@
-import AppearByScroll from './AppearByScroll.vue';
 <template>
   <section>
     <div class="text-column font-serif">
