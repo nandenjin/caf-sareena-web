@@ -25,7 +25,7 @@
                 left: 50vw;
               "
             >
-              <img src="@/assets/images/works_0.jpg" alt="" />
+              <img src="@/assets/images/works_0.jpg" alt="" loading="lazy" />
               <figcaption class="font-gothic" lang="en">
                 We are marching towards non-existent, 2023, Performance
               </figcaption>
@@ -38,7 +38,7 @@
               class="visual"
               style="transform: translateX(-1rem); bottom: 10vh; right: 5vw"
             >
-              <img src="@/assets/images/works_1.jpg" alt="" />
+              <img src="@/assets/images/works_1.jpg" alt="" loading="lazy" />
               <figcaption class="font-gothic" lang="en">
                 Balen(ciaga) I belong, 2022, Video installation
               </figcaption>

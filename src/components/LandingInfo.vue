@@ -11,12 +11,14 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
               alt="IN THE REALM "
               class="logo"
               style="max-width: 72%; margin-right: 1rem"
+              loading="lazy"
             />
             <img
               src="@/assets/design/title-mini-en-1.svg"
               alt="BEYOND SPECTRUM"
               class="logo"
               style="max-width: 100%"
+              loading="lazy"
             />
           </div>
           <img
@@ -24,6 +26,7 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
             alt="スペクトルの彼方で"
             class="logo"
             style="max-width: 90%"
+            loading="lazy"
           />
         </h2>
         <table class="font-gothic">
@@ -64,6 +67,7 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
                         src="@/assets/images/map.jpg"
                         style="width: 100%"
                         alt="現代芸術振興財団までの地図。東京メトロ六本木駅 3番出口より徒歩"
+                        loading="lazy"
                       />
                       <figcaption>出典｜国土地理院</figcaption>
                     </figure>

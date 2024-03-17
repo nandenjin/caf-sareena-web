@@ -14,6 +14,7 @@ import AppearByScroll from './AppearByScroll.vue';
             src="@/assets/images/image_7.jpg"
             alt=""
             style="transform: translateX(1em); bottom: 3vh; left: 55vw"
+            loading="lazy"
           />
         </p>
       </AppearByScroll>
@@ -44,6 +45,7 @@ import AppearByScroll from './AppearByScroll.vue';
               src="@/assets/images/image_8.jpg"
               alt=""
               style="transform: translateX(-1em); top: 5vh; right: 5vw"
+              loading="lazy"
             />
           </p>
         </div>
