@@ -21,8 +21,8 @@
               style="
                 text-align: right;
                 transform: translateX(2rem);
-                top: 20vh;
-                left: 55vw;
+                top: 12vh;
+                left: 50vw;
               "
             >
               <img src="@/assets/images/works_0.jpg" alt="" />

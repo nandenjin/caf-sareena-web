@@ -13,7 +13,7 @@ import AppearByScroll from './AppearByScroll.vue';
             class="visual"
             src="@/assets/images/image_7.jpg"
             alt=""
-            style="transform: translateX(1em); bottom: 5vh; left: 55vw"
+            style="transform: translateX(1em); bottom: 3vh; left: 55vw"
           />
         </p>
       </AppearByScroll>
@@ -43,7 +43,7 @@ import AppearByScroll from './AppearByScroll.vue';
               class="visual"
               src="@/assets/images/image_8.jpg"
               alt=""
-              style="transform: translateX(-1em); top: 10vh; right: 5vw"
+              style="transform: translateX(-1em); top: 5vh; right: 5vw"
             />
           </p>
         </div>
@@ -55,7 +55,7 @@ import AppearByScroll from './AppearByScroll.vue';
               class="visual"
               src="@/assets/images/image_9.jpg"
               alt=""
-              style="transform: translateX(1em); bottom: 40vh; left: 50vw"
+              style="transform: translateX(1em); bottom: 40vh; left: 47vw"
             />
           </p>
         </div>
