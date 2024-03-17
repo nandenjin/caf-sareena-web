@@ -1,5 +1,8 @@
 <template>
-  <div class="vr-root" :class="{ 'is-loading': isLoading }">
+  <div
+    class="vr-root"
+    :class="{ 'is-loading': isLoading, 'is-rendering': isRendering }"
+  >
     <div ref="rendererContainer" class="renderer"></div>
     <div class="loading"></div>
   </div>
@@ -10,7 +13,7 @@ import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { CSS3DRenderer } from 'three/addons'
 import { Camera, PerspectiveCamera, Scene, Vector2 } from 'three'
 import {
-  PictureAsset,
+  PLACEHOLDER_IMAGE,
   VRPictureFrame,
   fetchImage,
   pictures,
@@ -30,6 +33,7 @@ const loadingState = reactive({
   loaded: 0,
 })
 const isLoading = computed(() => loadingState.total > loadingState.loaded)
+const isRendering = ref(false)
 
 /** Resize renderer with window size */
 const handleCanvasResize = () => {
@@ -107,6 +111,21 @@ onMounted(async () => {
   tCamera.position.set(0, 0, 0)
   tCamera.lookAt(1, 0, 0)
 
+  for (let i = 0; i < pictures.length; i++) {
+    const { position, distance, cycleMs, urls } = pictures[i]
+    const frame = new VRPictureFrame(480, 320, cycleMs)
+    frame.setPictures(Array(urls.length).fill(PLACEHOLDER_IMAGE))
+    frame.setIndex(Math.floor(urls.length * Math.random()))
+
+    // Positioning
+    frame.css3DObject.position.copy(position).setLength(distance)
+    frame.css3DObject.lookAt(0, 0, 0)
+
+    // Add to scene
+    frames.value.push(frame)
+    tScene.add(frame.css3DObject)
+  }
+
   isMounted.value = true
 
   handleCanvasResize()
@@ -117,11 +136,12 @@ onMounted(async () => {
 
   // Start render loop
   render()
+  isRendering.value = true
 
   loadingState.loaded = 0
   loadingState.total = 0
 
-  const loadingTasks: Promise<PictureAsset>[] = []
+  const loadingTasks: Promise<string[]>[] = []
   for (const picture of pictures) {
     loadingState.total += picture.urls.length
 
@@ -133,28 +153,14 @@ onMounted(async () => {
             return url
           })
         )
-      ).then((urls) => ({
-        ...picture,
-        urls,
-      }))
+      )
     )
   }
 
-  Promise.all(loadingTasks).then((pictureFrameConfigs) => {
-    // Init picture frames
-    for (let i = 0; i < pictureFrameConfigs.length; i++) {
-      const { position, distance, cycleMs, urls } = pictureFrameConfigs[i]
-      const frame = new VRPictureFrame(480, 320, cycleMs)
-      frame.setPictures(urls)
-      frame.setIndex(Math.floor(urls.length * Math.random()))
-
-      // Positioning
-      frame.css3DObject.position.copy(position).setLength(distance)
-      frame.css3DObject.lookAt(0, 0, 0)
-
-      // Add to scene
-      frames.value.push(frame)
-      tScene.add(frame.css3DObject)
+  Promise.all(loadingTasks).then((urls) => {
+    for (let i = 0; i < urls.length; i++) {
+      frames.value[i].setPictures(urls[i])
+      frames.value[i].forceUpdate()
     }
   })
 })
@@ -200,7 +206,7 @@ onUnmounted(() => {
     }
   }
 
-  &.is-loading {
+  &:not(.is-rendering) {
     .renderer {
       opacity: 0;
     }

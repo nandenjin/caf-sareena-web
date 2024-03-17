@@ -38,6 +38,9 @@ import Image61 from '@/assets/images/6-1.jpg'
 // import Image65 from '@/assets/images/6-5.jpg'
 import Image66 from '@/assets/images/6-6.jpg'
 
+export const PLACEHOLDER_IMAGE =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8+x8AAr8B3gzOjaQAAAAASUVORK5CYII='
+
 const imageCache: Record<string, string | Promise<string>> = {}
 export const fetchImage = (url: string) => {
   if (imageCache[url]) {
@@ -169,6 +172,10 @@ export class VRPictureFrame {
       this.domElement.appendChild(nextImageDom)
     })
     this.index = value
+  }
+
+  forceUpdate() {
+    this.nextUpdate = 0
   }
 
   tick() {
