@@ -14,6 +14,7 @@
           src="@/assets/design/title.svg"
           alt="スペクトルの彼方で | サリーナサッタポン / THE REALM BEYOND SPECTRUM | SAREENA SATTAPON"
           class="logo"
+          decoding="async"
         />
       </h1>
       <p>
@@ -21,12 +22,14 @@
           src="@/assets/design/info.svg"
           alt="23 MARCH - 25 MAY 2024, 12:00-19:00 / OPEN THURSDAY, FRIDAY AND SATURDAY / CONTEMPORARY ART FOUNDATION - 4F PIRAMIDE BLDG., 6-6-9 ROPPONGI, MINATO-KU, TOKYO 106-0032"
           class="info"
+          decoding="async"
         />
       </p>
       <a href="https://gendai-art.org/" class="caf-logo">
         <img
           src="@/assets/design/caf-logo.svg"
           alt="Contemporary Art Foundation"
+          decoding="async"
         />
       </a>
     </div>

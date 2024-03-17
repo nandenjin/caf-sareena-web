@@ -7,12 +7,16 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net/" crossorigin />
     <!-- YakuHanJP https://yakuhanjp.qranoko.jp/ -->
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      onload="this.onload=null; this.rel='stylesheet'"
       href="https://cdn.jsdelivr.net/npm/yakuhanjp@4.0.1/dist/css/yakuhanmp.css"
     />
     <link
+      rel="preload"
+      as="style"
+      onload="this.onload=null; this.rel='stylesheet'"
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&family=Noto+Serif+JP:wght@600&family=EB+Garamond:wght@500&display=swap"
-      rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="/src/assets/favicon.svg" />
     <link rel="icon" type="image/png" href="/src/assets/favicon.png" />
@@ -39,6 +43,6 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/main.ts" async></script>
   </body>
 </html>
