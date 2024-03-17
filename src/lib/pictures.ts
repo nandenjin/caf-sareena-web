@@ -155,7 +155,7 @@ export class VRPictureFrame {
       if (current) {
         // Remove current image after transition
         current.addEventListener('transitionend', () => {
-          this.domElement.removeChild(current!)
+          current.parentElement?.removeChild(current!)
           this.currentImageDom = nextImageDom
           nextImageDom.classList.add('is-active')
         })
