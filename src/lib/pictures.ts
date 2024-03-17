@@ -3,39 +3,39 @@ import { CSS3DObject } from 'three/addons'
 
 import Image11 from '@/assets/images/1-1.jpg'
 import Image12 from '@/assets/images/1-2.jpg'
-import Image13 from '@/assets/images/1-3.jpg'
-import Image14 from '@/assets/images/1-4.jpg'
-import Image15 from '@/assets/images/1-5.jpg'
-import Image16 from '@/assets/images/1-6.jpg'
-import Image21 from '@/assets/images/2-1.jpg'
+// import Image13 from '@/assets/images/1-3.jpg'
+// import Image14 from '@/assets/images/1-4.jpg'
+// import Image15 from '@/assets/images/1-5.jpg'
+// import Image16 from '@/assets/images/1-6.jpg'
+// import Image21 from '@/assets/images/2-1.jpg'
 import Image22 from '@/assets/images/2-2.jpg'
 import Image23 from '@/assets/images/2-3.jpg'
-import Image24 from '@/assets/images/2-4.jpg'
-import Image25 from '@/assets/images/2-5.jpg'
-import Image26 from '@/assets/images/2-6.jpg'
-import Image31 from '@/assets/images/3-1.jpg'
-import Image32 from '@/assets/images/3-2.jpg'
+// import Image24 from '@/assets/images/2-4.jpg'
+// import Image25 from '@/assets/images/2-5.jpg'
+// import Image26 from '@/assets/images/2-6.jpg'
+// import Image31 from '@/assets/images/3-1.jpg'
+// import Image32 from '@/assets/images/3-2.jpg'
 import Image33 from '@/assets/images/3-3.jpg'
 import Image34 from '@/assets/images/3-4.jpg'
-import Image35 from '@/assets/images/3-5.jpg'
-import Image36 from '@/assets/images/3-6.jpg'
-import Image41 from '@/assets/images/4-1.jpg'
-import Image42 from '@/assets/images/4-2.jpg'
-import Image43 from '@/assets/images/4-3.jpg'
+// import Image35 from '@/assets/images/3-5.jpg'
+// import Image36 from '@/assets/images/3-6.jpg'
+// import Image41 from '@/assets/images/4-1.jpg'
+// import Image42 from '@/assets/images/4-2.jpg'
+// import Image43 from '@/assets/images/4-3.jpg'
 import Image44 from '@/assets/images/4-4.jpg'
 import Image45 from '@/assets/images/4-5.jpg'
-import Image46 from '@/assets/images/4-6.jpg'
-import Image51 from '@/assets/images/5-1.jpg'
-import Image52 from '@/assets/images/5-2.jpg'
-import Image53 from '@/assets/images/5-3.jpg'
-import Image54 from '@/assets/images/5-4.jpg'
+// import Image46 from '@/assets/images/4-6.jpg'
+// import Image51 from '@/assets/images/5-1.jpg'
+// import Image52 from '@/assets/images/5-2.jpg'
+// import Image53 from '@/assets/images/5-3.jpg'
+// import Image54 from '@/assets/images/5-4.jpg'
 import Image55 from '@/assets/images/5-5.jpg'
 import Image56 from '@/assets/images/5-6.jpg'
 import Image61 from '@/assets/images/6-1.jpg'
-import Image62 from '@/assets/images/6-2.jpg'
-import Image63 from '@/assets/images/6-3.jpg'
-import Image64 from '@/assets/images/6-4.jpg'
-import Image65 from '@/assets/images/6-5.jpg'
+// import Image62 from '@/assets/images/6-2.jpg'
+// import Image63 from '@/assets/images/6-3.jpg'
+// import Image64 from '@/assets/images/6-4.jpg'
+// import Image65 from '@/assets/images/6-5.jpg'
 import Image66 from '@/assets/images/6-6.jpg'
 
 const createPosition = (xz: number, y: number) => {
@@ -55,45 +55,45 @@ export type PictureAsset = {
 export const pictures: PictureAsset[] = [
   {
     // Slot 1
-    position: createPosition(-0.3, 0.2),
-    distance: 2000,
-    cycleMs: 4000,
-    urls: [Image11, Image12, Image13, Image14, Image15, Image16],
+    position: createPosition(-0.4, 0.2),
+    distance: 1800,
+    cycleMs: 4200,
+    urls: [Image11, Image22, Image33, Image44, Image55, Image66],
   },
   {
     // Slot 2
     position: createPosition(0.35, 0.15),
     distance: 1500,
-    cycleMs: 2000,
-    urls: [Image21, Image22, Image23, Image24, Image25, Image26],
+    cycleMs: 2100,
+    urls: [Image23, Image34, Image45, Image55, Image61, Image12],
   },
   {
     // Slot 3
-    position: createPosition(0, 0),
-    distance: 2500,
-    cycleMs: 3000,
-    urls: [Image31, Image32, Image33, Image34, Image35, Image36],
+    position: createPosition(-0.05, 0),
+    distance: 1500,
+    cycleMs: 2500,
+    urls: [Image11, Image22, Image33, Image44, Image55, Image66],
   },
   {
     // Slot 4
     position: createPosition(-0.6, -0.2),
     distance: 2000,
-    cycleMs: 3000,
-    urls: [Image41, Image42, Image43, Image44, Image45, Image46],
+    cycleMs: 3300,
+    urls: [Image23, Image34, Image45, Image55, Image61, Image12],
   },
   {
     // Slot 5
-    position: createPosition(-0.2, -0.25),
-    distance: 2000,
-    cycleMs: 6000,
-    urls: [Image51, Image52, Image53, Image54, Image55, Image56],
+    position: createPosition(-0.2, -0.3),
+    distance: 1500,
+    cycleMs: 5500,
+    urls: [Image11, Image22, Image33, Image44, Image55, Image66],
   },
   {
     // Slot 6
-    position: createPosition(0.6, -0.15),
+    position: createPosition(0.5, -0.15),
     distance: 1500,
     cycleMs: 5000,
-    urls: [Image61, Image62, Image63, Image64, Image65, Image66],
+    urls: [Image23, Image34, Image45, Image56, Image61, Image12],
   },
 ]
 
