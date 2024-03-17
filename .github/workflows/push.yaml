@@ -26,20 +26,20 @@ jobs:
       - run: npm run build
         env:
           BASE_URL: caf-sareena-web
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+  #     - uses: actions/upload-pages-artifact@v3
+  #       with:
+  #         path: dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/dev'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - uses: actions/deploy-pages@v4
-        id: deployment
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/dev'
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   steps:
+  #     - uses: actions/deploy-pages@v4
+  #       id: deployment
