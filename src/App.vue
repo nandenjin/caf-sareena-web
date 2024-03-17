@@ -37,8 +37,14 @@ body {
   margin: 0;
 }
 
-u {
+u,
+a {
+  color: inherit;
   text-underline-offset: 0.2em;
+}
+
+a {
+  text-decoration: dashed underline;
 }
 
 figure {

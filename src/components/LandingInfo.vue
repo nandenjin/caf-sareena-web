@@ -46,17 +46,27 @@ import AppearByScroll from './AppearByScroll.vue'; import AppearByScroll from
             <tr>
               <th>アクセス</th>
               <td>
-                <u>東京都港区六本木6-6-9 ピラミデビル4F</u><br />Piramide Bldg.,
-                4F 6-6-9 Roppongi, Minato-ku Tokyo
+                <a
+                  href="https://maps.app.goo.gl/y7LkvGut1nviRuEd9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >東京都港区六本木6-6-9 ピラミデビル4F</a
+                ><br />Piramide Bldg., 4F 6-6-9 Roppongi, Minato-ku Tokyo
                 <AppearByScroll>
-                  <figure class="map">
-                    <img
-                      src="@/assets/images/map.jpg"
-                      style="width: 100%"
-                      alt="現代芸術振興財団までの地図。東京メトロ六本木駅 3番出口より徒歩"
-                    />
-                    <figcaption>出典｜国土地理院</figcaption>
-                  </figure>
+                  <a
+                    href="https://maps.app.goo.gl/y7LkvGut1nviRuEd9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <figure class="map">
+                      <img
+                        src="@/assets/images/map.jpg"
+                        style="width: 100%"
+                        alt="現代芸術振興財団までの地図。東京メトロ六本木駅 3番出口より徒歩"
+                      />
+                      <figcaption>出典｜国土地理院</figcaption>
+                    </figure>
+                  </a>
                 </AppearByScroll>
               </td>
             </tr>
