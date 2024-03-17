@@ -159,7 +159,7 @@ export class VRPictureFrame {
     const { nextUpdate, cycleMs, pictures, index } = this
     if (Date.now() > nextUpdate) {
       this.nextUpdate = Date.now() + cycleMs
-      this.index = (index + 1) % pictures.length
+      this.setIndex((index + 1) % pictures.length)
     }
   }
 }
