@@ -94,6 +94,30 @@ onMounted(async () => {
     return
   }
 
+  const tScene = scene.value,
+    tCamera = camera.value
+
+  // Init renderer
+  const tRenderer = new CSS3DRenderer({
+    element: rendererContainer.value,
+  })
+  renderer.value = tRenderer
+
+  // Init camera
+  tCamera.position.set(0, 0, 0)
+  tCamera.lookAt(1, 0, 0)
+
+  isMounted.value = true
+
+  handleCanvasResize()
+
+  window.addEventListener('resize', handleCanvasResize)
+  window.addEventListener('mousemove', handleMouseMove)
+  window.addEventListener('deviceorientation', handleOrientation)
+
+  // Start render loop
+  render()
+
   loadingState.loaded = 0
   loadingState.total = 0
 
@@ -116,47 +140,23 @@ onMounted(async () => {
     )
   }
 
-  const pictureFrameConfigs = await Promise.all(loadingTasks)
+  Promise.all(loadingTasks).then((pictureFrameConfigs) => {
+    // Init picture frames
+    for (let i = 0; i < pictureFrameConfigs.length; i++) {
+      const { position, distance, cycleMs, urls } = pictureFrameConfigs[i]
+      const frame = new VRPictureFrame(480, 320, cycleMs)
+      frame.setPictures(urls)
+      frame.setIndex(Math.floor(urls.length * Math.random()))
 
-  const tScene = scene.value,
-    tCamera = camera.value
+      // Positioning
+      frame.css3DObject.position.copy(position).setLength(distance)
+      frame.css3DObject.lookAt(0, 0, 0)
 
-  // Init renderer
-  const tRenderer = new CSS3DRenderer({
-    element: rendererContainer.value,
+      // Add to scene
+      frames.value.push(frame)
+      tScene.add(frame.css3DObject)
+    }
   })
-  renderer.value = tRenderer
-
-  // Init picture frames
-  for (let i = 0; i < pictureFrameConfigs.length; i++) {
-    const { position, distance, cycleMs, urls } = pictureFrameConfigs[i]
-    const frame = new VRPictureFrame(480, 320, cycleMs)
-    frame.setPictures(urls)
-    frame.setIndex(Math.floor(urls.length * Math.random()))
-
-    // Positioning
-    frame.css3DObject.position.copy(position).setLength(distance)
-    frame.css3DObject.lookAt(0, 0, 0)
-
-    // Add to scene
-    frames.value.push(frame)
-    tScene.add(frame.css3DObject)
-  }
-
-  // Init camera
-  tCamera.position.set(0, 0, 0)
-  tCamera.lookAt(1, 0, 0)
-
-  isMounted.value = true
-
-  handleCanvasResize()
-
-  window.addEventListener('resize', handleCanvasResize)
-  window.addEventListener('mousemove', handleMouseMove)
-  window.addEventListener('deviceorientation', handleOrientation)
-
-  // Start render loop
-  render()
 })
 
 onUnmounted(() => {
