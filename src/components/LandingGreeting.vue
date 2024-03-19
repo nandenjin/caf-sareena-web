@@ -2,8 +2,12 @@
   <section>
     <div class="text-column font-gothic">
       <p>
-        この度、現代芸術振興財団は<u>サリーナ・サッタポン</u>個展「IN THE REALM
-        BEYOND
+        この度、現代芸術振興財団は<a
+          href="https://www.instagram.com/sareenasattapon/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >サリーナ・サッタポン</a
+        >個展「IN THE REALM BEYOND
         SPECTRUM」を開催いたします。サリーナ・サッタポンはタイ出身1992年生まれ。バンコクのシラパコーン大学大学院修了後、現在は東京藝術大学グローバルアートプラクティス専攻の研究生として在籍、東京を拠点に活動しています。
       </p>
       <p>
