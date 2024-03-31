@@ -18,6 +18,7 @@ import {
   fetchImage,
   pictures,
 } from '../lib/pictures'
+import type Stats from 'stats.js'
 
 const frames = ref<VRPictureFrame[]>([])
 
@@ -34,6 +35,9 @@ const loadingState = reactive({
 })
 const isLoading = computed(() => loadingState.total > loadingState.loaded)
 const isRendering = ref(false)
+
+/** Stats.js */
+const stats = ref<Stats>()
 
 /** Resize renderer with window size */
 const handleCanvasResize = () => {
@@ -57,6 +61,8 @@ const handleOrientation = (e: DeviceOrientationEvent) => {
 /** Render the scene */
 const render = () => {
   if (!isMounted.value) return
+
+  stats.value?.begin()
 
   // Update picture frames
   for (const frame of frames.value) {
@@ -89,10 +95,29 @@ const render = () => {
   // Render scene
   tRenderer?.render(tScene, tCamera)
 
+  stats.value?.end()
+
   requestAnimationFrame(render)
 }
 
 onMounted(async () => {
+  // Dev mode
+  if (location.search === '?dev') {
+    console.info('🛠️ Dev mode')
+
+    // Show stats monitor
+    const statsInstance = new (await import('stats.js')).default()
+    statsInstance.showPanel(0)
+    document.body.appendChild(statsInstance.dom)
+    stats.value = statsInstance
+  } else {
+    console.info(
+      '%cHey there!',
+      'font-weight: bold; background-color: #0078d4;padding:2px 4px; border-radius:4px;',
+      "I'm Kazumi Inada, a developer who developed this website. If you found a bug or have any feedback, please let me know. https://www.nandenjin.com/profile#Contact"
+    )
+    console.info("For debug mode, add '?dev' to the URL.")
+  }
   if (!rendererContainer.value) {
     console.error('rendererContainer is not found')
     return
