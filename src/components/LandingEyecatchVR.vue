@@ -114,6 +114,11 @@ const render = () => {
 }
 
 onMounted(async () => {
+  if (!rendererContainer.value) {
+    console.error('rendererContainer is not found')
+    return
+  }
+
   // Dev mode
   if (location.search === '?dev') {
     console.info('🛠️ Dev mode')
@@ -130,18 +135,6 @@ onMounted(async () => {
       "I'm Kazumi Inada, a developer who developed this website. If you found a bug or have any feedback, please let me know. https://www.nandenjin.com/profile#Contact"
     )
     console.info("For debug mode, add '?dev' to the URL.")
-  }
-
-  // If on iOS, we need to request permission to use device orientation
-  // @ts-expect-error requestPermission is only in iOS
-  if (DeviceOrientationEvent.requestPermission) {
-    // Disable interaction and use generated animation
-    shouldAutoMotion.value = true
-  }
-
-  if (!rendererContainer.value) {
-    console.error('rendererContainer is not found')
-    return
   }
 
   const tScene = scene.value,
@@ -178,7 +171,36 @@ onMounted(async () => {
 
   window.addEventListener('resize', handleCanvasResize)
   window.addEventListener('mousemove', handleMouseMove)
-  window.addEventListener('deviceorientation', handleOrientation)
+
+  // If on iOS, we need to request permission to use device orientation
+  // @ts-expect-error requestPermission is only in iOS
+  if (DeviceOrientationEvent.requestPermission) {
+    // Disable interaction and use generated animation
+    shouldAutoMotion.value = true
+    console.info(
+      '📱 Device orientation permission is required. Tap once at top of the page.'
+    )
+
+    // Show permission dialog on click
+    rendererContainer.value.addEventListener('click', () => {
+      // @ts-expect-error requestPermission is only in iOS
+      DeviceOrientationEvent.requestPermission().then((response) => {
+        // If permission is granted, start listening to device orientation
+        if (response === 'granted') {
+          shouldAutoMotion.value = false
+          window.addEventListener('deviceorientation', handleOrientation)
+          console.info('Permission granted. Move your device and enjoy!')
+        } else {
+          console.error('Permission denied. Keep using generated animation.')
+        }
+      })
+    })
+  }
+
+  // On other devices, just listen to device orientation
+  else {
+    window.addEventListener('deviceorientation', handleOrientation)
+  }
 
   // Start render loop
   render()

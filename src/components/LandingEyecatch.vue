@@ -78,6 +78,9 @@ header {
   max-width: 575px;
   margin: var(--margin-page);
 
+  /* To catch pointer events by VR component */
+  pointer-events: none;
+
   .logo {
     width: 100%;
   }
