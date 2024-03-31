@@ -56,7 +56,7 @@ const handleMouseMove = (e: MouseEvent) => {
 }
 
 const handleOrientation = (e: DeviceOrientationEvent) => {
-  if (!shouldAutoMotion.value) return
+  if (shouldAutoMotion.value) return
   const x = e.gamma ? -e.gamma / 90 : 0
   const y = 0 // e.beta ? -e.beta / 90 : 0
 
