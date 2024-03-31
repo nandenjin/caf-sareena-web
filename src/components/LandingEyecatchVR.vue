@@ -36,6 +36,9 @@ const loadingState = reactive({
 const isLoading = computed(() => loadingState.total > loadingState.loaded)
 const isRendering = ref(false)
 
+/** If sensor is not available, disable interaction and use generated animation */
+const shouldAutoMotion = ref(false)
+
 /** Stats.js */
 const stats = ref<Stats>()
 
@@ -45,6 +48,7 @@ const handleCanvasResize = () => {
 }
 
 const handleMouseMove = (e: MouseEvent) => {
+  if (shouldAutoMotion.value) return
   const x = (e.clientX / window.innerWidth - 0.5) * 2
   const y = (e.clientY / window.innerHeight - 0.5) * 2
 
@@ -52,6 +56,7 @@ const handleMouseMove = (e: MouseEvent) => {
 }
 
 const handleOrientation = (e: DeviceOrientationEvent) => {
+  if (!shouldAutoMotion.value) return
   const x = e.gamma ? -e.gamma / 90 : 0
   const y = 0 // e.beta ? -e.beta / 90 : 0
 
@@ -63,6 +68,14 @@ const render = () => {
   if (!isMounted.value) return
 
   stats.value?.begin()
+
+  // Auto motion
+  if (shouldAutoMotion.value) {
+    pointerPosition.value.set(
+      Math.sin(performance.now() / 10000),
+      Math.cos(performance.now() / 7000)
+    )
+  }
 
   // Update picture frames
   for (const frame of frames.value) {
@@ -118,6 +131,14 @@ onMounted(async () => {
     )
     console.info("For debug mode, add '?dev' to the URL.")
   }
+
+  // If on iOS, we need to request permission to use device orientation
+  // @ts-expect-error requestPermission is only in iOS
+  if (DeviceOrientationEvent.requestPermission) {
+    // Disable interaction and use generated animation
+    shouldAutoMotion.value = true
+  }
+
   if (!rendererContainer.value) {
     console.error('rendererContainer is not found')
     return
