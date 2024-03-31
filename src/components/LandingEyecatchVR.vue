@@ -313,6 +313,7 @@ onUnmounted(() => {
     height: 100%;
     object-fit: cover;
     opacity: 1;
+    pointer-events: none;
 
     &.is-active {
       transition: opacity 0.5s;
