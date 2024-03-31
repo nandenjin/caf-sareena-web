@@ -46,9 +46,11 @@ onUnmounted(() => {
 .appear-by-scroll {
   opacity: 0;
   transition: opacity 0.5s;
+  pointer-events: none;
 
   &.is-visible {
     opacity: 1;
+    pointer-events: auto;
   }
 }
 </style>
