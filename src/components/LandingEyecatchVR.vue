@@ -227,6 +227,16 @@ onMounted(async () => {
 
   Promise.all(loadingTasks).then((urls) => {
     for (let i = 0; i < urls.length; i++) {
+      // Decode data once at the beginning to avoid firing requests at transitions
+      for (let j = 0; j < urls[i].length; j++) {
+        const img = new Image()
+        img.src = urls[i][j]
+        img.alt = ''
+        img.style.cssText =
+          'position: absolute; top: 0; left: 0; width: 1px; height: 1px; opacity: 0.01;'
+        document.body.appendChild(img)
+      }
+
       frames.value[i].setPictures(urls[i])
       frames.value[i].forceUpdate()
     }
