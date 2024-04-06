@@ -19,23 +19,9 @@ import LandingInfo from './components/LandingInfo.vue'
 </template>
 
 <style>
-:root {
-  font-size: 19px;
-  --margin-page: 2rem;
-
-  @media screen and (max-width: 1200px) {
-    font-size: 1.5vw;
-  }
-
-  @media screen and (max-width: 768px) {
-    font-size: 15px;
-  }
-}
-
-html,
-body {
-  margin: 0;
-}
+/*
+ * Directly injected global styles to index.html for best performance
+ */
 
 u,
 a {

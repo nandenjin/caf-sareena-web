@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="landing-eyecatch">
     <div
       class="vr-container"
       :style="{
@@ -56,60 +56,5 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-header {
-  width: 100%;
-  height: 100vh;
-}
-
-.vr-container {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.text-container {
-  position: relative;
-  z-index: 2;
-  max-width: 575px;
-  margin: var(--margin-page);
-
-  /* To catch pointer events by VR component */
-  pointer-events: none;
-
-  .logo {
-    width: 100%;
-  }
-
-  .info {
-    width: 95%;
-  }
-
-  .caf-logo {
-    display: block;
-    position: fixed;
-    top: var(--margin-page);
-    right: var(--margin-page);
-    z-index: 1;
-    width: 4.5rem;
-    transition: opacity 0.3s;
-
-    &:hover {
-      opacity: 0.7;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 70%;
-
-    .caf-logo {
-      position: static;
-      width: 3rem;
-    }
-  }
-}
+/* Directly injected to index.html for best performance */
 </style>
