@@ -6,7 +6,7 @@
         opacity: Math.min(1, Math.max(1 - scrollY / 500, 0)),
       }"
     >
-      <VRview />
+      <LandingEyecatchVR />
     </div>
     <div class="text-container">
       <h1>
@@ -37,9 +37,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
+import LandingEyecatchVR from './LandingEyecatchVR.vue'
 
-const VRview = defineAsyncComponent(() => import('./LandingEyecatchVR.vue'))
 const scrollY = ref(0)
 
 const onScroll = () => {
