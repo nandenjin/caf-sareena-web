@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc && vite-ssg build",
     "preview": "vite preview",
     "lint": "eslint . --cache --fix --ext ts,vue",
     "lintfix": "eslint . --ext ts,vue --fix",
@@ -30,6 +30,7 @@
     "prettier": "^3.2.5",
     "typescript": "^5.2.2",
     "vite": "^5.1.7",
+    "vite-ssg": "^0.23.6",
     "vue-tsc": "^1.8.27"
   }
 }

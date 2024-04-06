@@ -1,3 +1,6 @@
+# For vite-ssg-temp
+.vite-ssg-temp
+
 # Logs
 logs
 *.log
