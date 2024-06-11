@@ -4,6 +4,7 @@
       class="vr-container"
       :style="{
         opacity: Math.min(1, Math.max(1 - scrollY / 500, 0)),
+        display: scrollY < 500 ? 'block' : 'none',
       }"
     >
       <LandingEyecatchVR />
