@@ -38,6 +38,32 @@
         </p>
         <p style="text-align: right">sareena sattapon</p>
       </div>
+      <div style="margin: 2em auto 4em">
+        <AppearByClick>
+          <template v-slot:placeholder>
+            <div class="video-placeholder">
+              <img
+                src="@/assets/images/interview-video-thumbnail.jpg"
+                alt=""
+                style="max-width: 100%; cursor: pointer"
+                loading="lazy"
+              />
+              <div class="shadow"></div>
+            </div>
+          </template>
+          <template v-slot:default>
+            <iframe
+              src="https://www.youtube.com/embed/M42R2rIL28M?si=2hOpnO39h-g5KZE4"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              style="width: 100%; aspect-ratio: 16 / 9"
+            ></iframe
+          ></template>
+        </AppearByClick>
+      </div>
       <AppearByScroll>
         <div class="visual-container">
           <p style="text-align: left">
@@ -69,10 +95,53 @@
 
 <script setup lang="ts">
 import AppearByScroll from './AppearByScroll.vue'
+import AppearByClick from './AppearByClick.vue'
 </script>
 
 <style scoped>
 section {
   margin: 5em var(--margin-page) 0;
+}
+
+.video-placeholder {
+  text-align: center;
+  position: relative;
+  line-height: 0;
+  cursor: pointer;
+
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+
+    &::before {
+      display: inline-block;
+      content: '';
+      border: 30px solid transparent;
+      border-width: 20px 0 20px 40px;
+      border-left-color: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      margin: auto;
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      background-color: rgb(0, 0, 0, 0.5);
+
+      &::before {
+        transform: scale(1.2);
+      }
+    }
+  }
 }
 </style>
